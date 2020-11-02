@@ -18,7 +18,7 @@ function* getCalc() {
 function* newCalc(action){
     try {
         //run the delete request to permanently remove item from item table
-        yield axios.post('/api/calc'+ action.payload);
+        yield axios.post('/api/calc', action.payload);
         //run the get active worker saga above to get the updated changes
         yield put({type: 'GET_CALC'})
     } catch (error){
