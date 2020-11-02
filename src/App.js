@@ -9,8 +9,7 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch({type: 'GET_ACTIVE'})
-    dispatch({type: 'GET_INACTIVE'})
+    dispatch({type: 'GET_CALC'})
   });
 
   return (
@@ -18,9 +17,9 @@ function App() {
       <header className="App-header">
         <br/>
         <br/>
-        <img src = {bagel} alt = 'delicious bagel' style={{animation: `App-logo-spin 5s linear infinite`, maxWidth: '250px' }}/>
+        {/* <img src = {bagel} alt = 'delicious bagel' style={{animation: `App-logo-spin 5s linear infinite`, maxWidth: '250px' }}/> */}
         <h1>
-          *Welcome to Bagel Acquisition Module Alpha*
+          React Calculator
         </h1>
         <MainList/>
       </header>

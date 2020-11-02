@@ -16,8 +16,10 @@ function ItemForm() {
 
     const handleAdd =() =>{
         setOpen(true);
-        const postObject = {name: input.newItem};
-        dispatch({type: "ADD_ITEM", payload: postObject})
+        const answer = eval(input.newItem);
+        const calculation = input.newItem + " = " + answer;
+        const postObject = {calculation: calculation};
+        dispatch({type: "NEW_CALC", payload: postObject})
         setInput({
             ...input, 
             newItem: ''
@@ -37,14 +39,14 @@ function ItemForm() {
             <Grid container direction = 'row'>
                 <TextField 
                     style = {{flexGrow: 1}} 
-                    label = "Grocery Item" 
+                    label = "New Calculation" 
                     variant='filled' 
                     name="newItem"
                     onChange={handleInputChange} 
                     value = {input.newItem || '' }
                     inputProps={{ maxLength: 50}}
                 />
-                <Button variant = 'contained' color = 'primary' onClick = {handleAdd}>Add</Button>    
+                <Button variant = 'contained' color = 'primary' onClick = {handleAdd}>=</Button>    
             </Grid>
         </Paper>
         <Snackbar

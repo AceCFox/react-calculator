@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import activeItem from './allActiveReducer';
 import inactiveItem from './allInactiveReducer';
+import calculations from './calculationReducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -11,6 +12,7 @@ import inactiveItem from './allInactiveReducer';
 const rootReducer = combineReducers({
     activeItem,
     inactiveItem,
+    calculations,
 });
 
 export default rootReducer;

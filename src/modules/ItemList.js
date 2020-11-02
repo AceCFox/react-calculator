@@ -1,27 +1,19 @@
 import React from 'react';
-import {ListItem, List, ListItemIcon, ListItemText, Paper,} from '@material-ui/core';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import {ListItem, List, ListItemText, Paper,} from '@material-ui/core';
 import {useSelector} from 'react-redux'
 import { useDispatch } from 'react-redux'
 
 function ItemList() {
-  const active = useSelector(state => state.activeItem);
-  const dispatch = useDispatch()
+  const history = useSelector(state => state.calculations);
 
-  const handleClick = (index) =>{
-      dispatch({type: 'ITEM_ACQUIRED', payload: index})
-  }
 
   return (
     <div >
         <Paper>
             <List dense>
-                {active.map((item, index)=>
-                    <ListItem button key = {index}  onClick={() => handleClick(item.id)}>
-                        <ListItemIcon>
-                                <CheckBoxOutlineBlankIcon/>
-                            </ListItemIcon>
-                        <ListItemText primary = {item.name}/>
+                {history.map((item, index)=>
+                    <ListItem key = {index}>
+                        <ListItemText primary = {item.calculation}/>
                     </ListItem>
                 )}
             </List>
