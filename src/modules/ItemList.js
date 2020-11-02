@@ -7,10 +7,11 @@ function ItemList() {
   const history = useSelector(state => state.calculations);
   const dispatch = useDispatch()
 
+  //This checks for any updates from users every 5 seconds
   useEffect(() => {
     const interval = setInterval(() => {
         dispatch({type: 'GET_CALC'});
-    }, 1000);
+    }, 5000);
     return () => clearInterval(interval);
   }, []);
 

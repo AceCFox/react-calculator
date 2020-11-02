@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import './App.css';
 import MainList from "./modules/MainList";
 import { useDispatch } from 'react-redux'
+import Typography from '@material-ui/core/Typography';
 
 function App() {
 
@@ -15,11 +16,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <br/>
-        <br/>
         {/* <img src = {bagel} alt = 'delicious bagel' style={{animation: `App-logo-spin 5s linear infinite`, maxWidth: '250px' }}/> */}
-        <h1>
-          React Calculator
-        </h1>
+        <Typography variant = "h1">
+          Ace's Calculator
+        </Typography>
         <MainList/>
       </header>
     </div>

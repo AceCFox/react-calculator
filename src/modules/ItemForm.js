@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {TextField, DialogActions, DialogContent, Button, Grid, Paper, Dialog, IconButton} from '@material-ui/core';
+import {TextField, DialogActions, DialogContent, Button, Grid, Paper, Dialog, IconButton, Typography} from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 function ItemForm() {
@@ -71,7 +71,13 @@ function ItemForm() {
                     value = {input.newItem || '' }
                     inputProps={{ maxLength: 50}}
                 />
-                <Button variant = 'contained' color = 'primary' onClick = {handleAdd}><larger>=</larger></Button>    
+                <IconButton 
+                  color = 'primary' 
+                  onClick = {handleAdd} 
+                  size = 'medium'  
+                >
+                  =
+                </IconButton>    
             </Grid>
         </Paper>
         <Dialog
@@ -79,12 +85,12 @@ function ItemForm() {
         onClose={handleClose}
         >
           <DialogContent>
-            <p>
+            <Typography variant = "h4">
             Oops! Please input a valid equation :)
-            </p>
+            </Typography>
           </DialogContent>
           <DialogActions>
-            <Button onClick = {handleClose}>
+            <Button onClick = {handleClose} color = "primary">
               okay
             </Button>
           </DialogActions>
