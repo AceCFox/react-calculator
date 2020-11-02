@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import {TextField, Button, Grid, Paper, Snackbar, IconButton} from '@material-ui/core';
-import CloseIcon from '@material-ui/icons/Close';
+import {TextField, DialogActions, DialogContent, Button, Grid, Paper, Dialog, IconButton} from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 function ItemForm() {
@@ -11,6 +10,8 @@ function ItemForm() {
     const math = create(all)
     const limitedEvaluate = math.evaluate
     
+    //The following import statements limit the scope of evaluate to make it somewhat "safer" than eval
+    //as the user input and its evaluation are going directly to the server side
     math.import({
       import: function () { throw new Error('Function import is disabled') },
       createUnit: function () { throw new Error('Function createUnit is disabled') },
@@ -20,13 +21,14 @@ function ItemForm() {
       derivative: function () { throw new Error('Function derivative is disabled') }
     }, { override: true })
     
+    //standard input handler
     const handleInputChange = (e) => setInput({
         ...input, 
         [e.currentTarget.name]: e.currentTarget.value
     })
 
+    //this function handles the actual math and dispatches the result to a saga
     const handleAdd =() =>{
-        //setOpen(true);
         const equation = input.newItem
        try  {
           const result = limitedEvaluate(equation)
@@ -39,15 +41,20 @@ function ItemForm() {
               newItem: ''
           })
       } catch(err) {
-        alert('oops! please input a valid equation')
+        setOpen(true);
         console.log(err);
       }
     }
 
+    //this function closes the error window
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
           return;
         }
+      setInput({
+          ...input, 
+          newItem: ''
+      })
         setOpen(false);
       };
       
@@ -64,26 +71,24 @@ function ItemForm() {
                     value = {input.newItem || '' }
                     inputProps={{ maxLength: 50}}
                 />
-                <Button variant = 'contained' color = 'primary' onClick = {handleAdd}>=</Button>    
+                <Button variant = 'contained' color = 'primary' onClick = {handleAdd}><larger>=</larger></Button>    
             </Grid>
         </Paper>
-        <Snackbar
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
+        <Dialog
         open={open}
-        autoHideDuration={6000}
         onClose={handleClose}
-        message='item added!'
-        action={
-          <React.Fragment>
-            <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>
-              <CloseIcon fontSize="small" />
-            </IconButton>
-          </React.Fragment>
-        }
-        />
+        >
+          <DialogContent>
+            <p>
+            Oops! Please input a valid equation :)
+            </p>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick = {handleClose}>
+              okay
+            </Button>
+          </DialogActions>
+        </Dialog>
     </div>
   );
 }
