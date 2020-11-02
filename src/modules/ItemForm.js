@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {TextField, Button, Grid, Paper, Snackbar, IconButton} from '@material-ui/core';
 import CloseIcon from '@material-ui/icons/Close';
 import { useDispatch } from 'react-redux';
-import AddModal from './AddModal';
 
 function ItemForm() {
     const [input, setInput] = useState({});

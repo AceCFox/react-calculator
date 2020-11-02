@@ -1,5 +1,4 @@
 import { all } from 'redux-saga/effects';
-import itemSaga from './itemSaga';
 import calcSaga from './calcSaga';
 
 // rootSaga is the primary saga.
@@ -9,7 +8,6 @@ import calcSaga from './calcSaga';
 // some sagas trigger other sagas
 export default function* rootSaga() {
   yield all([
-      itemSaga(),
       calcSaga(),
   ]);
 }

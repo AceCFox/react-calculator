@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import './App.css';
 import MainList from "./modules/MainList";
 import { useDispatch } from 'react-redux'
-import bagel from './bagel.png'
 
 function App() {
 
