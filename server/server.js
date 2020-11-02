@@ -4,8 +4,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');;
 
-// Route includes
-const itemRouter = require('./routes/item.router');
+// Route include
 const calculationRouter = require('./routes/calculation.router')
 
 // Body parser middleware
@@ -13,7 +12,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 /* Routes */
-app.use('/api/item', itemRouter);
 app.use('/api/calc', calculationRouter);
 
 // Serve static files
