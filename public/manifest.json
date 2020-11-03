@@ -1,6 +1,6 @@
 {
-  "short_name": "BAMA",
-  "name": "Bagel Acquisition Module Alpha",
+  "short_name": "Calculator",
+  "name": "Ace's React Calculator",
   "icons": [
     {
       "src": "bagel.jpg",

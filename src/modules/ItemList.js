@@ -11,7 +11,7 @@ function ItemList() {
   useEffect(() => {
     const interval = setInterval(() => {
         dispatch({type: 'GET_CALC'});
-    }, 5000);
+    }, 1000);
     return () => clearInterval(interval);
   }, []);
 

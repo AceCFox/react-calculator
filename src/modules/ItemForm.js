@@ -26,7 +26,7 @@ function ItemForm() {
         ...input, 
         [e.currentTarget.name]: e.currentTarget.value
     })
-
+   
     //this function handles the actual math and dispatches the result to a saga
     const handleAdd =() =>{
         const equation = input.newItem
@@ -51,10 +51,6 @@ function ItemForm() {
         if (reason === 'clickaway') {
           return;
         }
-      setInput({
-          ...input, 
-          newItem: ''
-      })
         setOpen(false);
       };
       
